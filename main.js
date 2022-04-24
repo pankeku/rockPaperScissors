@@ -20,3 +20,14 @@ function computerPlay() {
     return play;
 
     }
+
+function playerSelection() {
+    let selection = "";
+
+    while (selection !== "rock" && selection !== "paper" && selection !== "scissors") {
+        selection = prompt("Rock, paper or scissors?").toLowerCase();
+    }
+    return selection;
+}
+
+
