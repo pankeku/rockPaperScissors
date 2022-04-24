@@ -16,7 +16,7 @@ function computerPlay() {
             play = "scissors"
             break;
     }
-    console.log("*play: " + play)
+    console.log("*Computer play: " + play)
     return play;
 
     }
@@ -29,5 +29,25 @@ function playerSelection() {
     }
     return selection;
 }
+
+function playRound(playerSelection, computerPlay) {
+
+    const win = `You win. Your choice - ${playerSelection}, beats computer's choice - ${computerPlay}.`;
+    const lose = `You lose. Computer's choice - ${computerPlay}, beats your choice - ${playerSelection}.`
+    const draw = `It's a draw. Your choice: ${computerPlay}, computer's choice: ${playerSelection}.`
+
+    if (playerSelection == computerPlay) {
+        return draw;
+    } else if (playerSelection == "rock" && computerPlay == "scissors") {
+            return win;
+        } else if (playerSelection == "scissors" && computerPlay == "paper") {
+            return win;
+         } else if (playerSelection == "paper" && computerPlay == "rock") {
+             return win;
+         } else {
+             return lose;
+         }
+
+        }
 
 
