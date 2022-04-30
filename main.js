@@ -16,9 +16,7 @@ function computerPlay() {
             play = "scissors"
             break;
     }
-    console.log("*Computer play: " + play)
     return play;
-
     }
 
 function playerSelection() {
@@ -43,7 +41,6 @@ function playRound(playerSelection, computerPlay) {
          } else {
              return 2;
          }
-
         }
 
 
@@ -66,7 +63,6 @@ function game() {
         } else if (playRound(playerChoice, computerChoice) == 1) {
             playerScore++;
             console.log(`Round #${roundNumber}: You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}. Score: ${playerScore}:${computerScore}.`);
-            console.log(`Player score:` + playerScore);
             roundNumber++;
 
         } else if (playRound(playerChoice, computerChoice) == 2) {
