@@ -32,22 +32,54 @@ function playerSelection() {
 
 function playRound(playerSelection, computerPlay) {
 
-    const win = `You win. Your choice - ${playerSelection}, beats computer's choice - ${computerPlay}.`;
-    const lose = `You lose. Computer's choice - ${computerPlay}, beats your choice - ${playerSelection}.`
-    const draw = `It's a draw. Your choice: ${computerPlay}, computer's choice: ${playerSelection}.`
-
     if (playerSelection == computerPlay) {
-        return draw;
+        return 0;
     } else if (playerSelection == "rock" && computerPlay == "scissors") {
-            return win;
+            return 1;
         } else if (playerSelection == "scissors" && computerPlay == "paper") {
-            return win;
+            return 1;
          } else if (playerSelection == "paper" && computerPlay == "rock") {
-             return win;
+             return 1;
          } else {
-             return lose;
+             return 2;
          }
 
         }
 
 
+function game() {
+
+    let playerScore = 0;
+    let computerScore = 0;
+    let roundNumber = 1;
+    
+    while (playerScore < 5 && computerScore < 5) {
+
+    
+    let playerChoice = playerSelection();
+    let computerChoice = computerPlay();
+
+        if (playRound(playerChoice, computerChoice) == 0) {
+            console.log(`Round #${roundNumber}: It's a draw. Your choice: ${computerChoice}, computer's choice: ${playerChoice}. Score: ${playerScore}:${computerScore}.`);
+            roundNumber++;
+
+        } else if (playRound(playerChoice, computerChoice) == 1) {
+            playerScore++;
+            console.log(`Round #${roundNumber}: You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}. Score: ${playerScore}:${computerScore}.`);
+            console.log(`Player score:` + playerScore);
+            roundNumber++;
+
+        } else if (playRound(playerChoice, computerChoice) == 2) {
+            computerScore++;
+            console.log(`Round #${roundNumber}: You lose. Computer's choice - ${computerChoice}, beats your choice - ${playerChoice}. Score: ${playerScore}:${computerScore}.`);
+            roundNumber++;
+        };
+
+        if (playerScore == 5) {
+            console.log(`You win the game. Score: ${playerScore}:${computerScore}.`)
+        } else if (computerScore == 5) {
+            console.log(`You lost the game. Score: ${playerScore}:${computerScore}.`)
+        }
+    }
+
+}
