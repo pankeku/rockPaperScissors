@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
   </head>
   <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-    <script src="main.js"></script>
+    <div id="box">
+      <button id="rock" class="handButton">Rock</button>
+      <button id="paper" class="handButton">Paper</button>
+      <button id="scissors" class="handButton">Scissors</button>
+      <div id="resultBox">
+        <div id="playerScore"></div>
+        <div id="gameResult"></div>
+      </div>
+      <button id="reset">Reset game</button>
+      <script src="main.js"></script>
+    </div>
   </body>
 </html>

@@ -4,6 +4,9 @@ let roundNumber = 1;
 let computerChoice = "";
 let playerChoice = "";
 
+let displayedPlayerScore = document.querySelector(`#playerScore`);
+let displayedGameResult = document.querySelector(`#gameResult`);
+
 function computerPlay() {
   const max = 3;
   let number = Math.floor(Math.random() * max);
@@ -45,31 +48,27 @@ function playRound(playerSelection, computerPlay) {
 }
 
 function game(roundResult) {
+
   if (roundResult == 0) {
-    console.log(
-      `Round #${roundNumber}: It's a draw. Your choice: ${computerChoice}, computer's choice: ${playerChoice}. Score: ${playerScore}:${computerScore}.`
-    );
+   displayedPlayerScore.textContent = `Round #${roundNumber}: It's a draw. Your choice: ${computerChoice}, computer's choice: ${playerChoice}. Score: ${playerScore}:${computerScore}.`;
+
     roundNumber++;
   } else if (roundResult == 1) {
     playerScore++;
-    console.log(
-      `Round #${roundNumber}: You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}. Score: ${playerScore}:${computerScore}.`
-    );
+    displayedPlayerScore.textContent = `Round #${roundNumber}: You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}. Score: ${playerScore}:${computerScore}.`;
     roundNumber++;
   } else if (roundResult == 2) {
     computerScore++;
-    console.log(
-      `Round #${roundNumber}: You lose. Computer's choice - ${computerChoice}, beats your choice - ${playerChoice}. Score: ${playerScore}:${computerScore}.`
-    );
+    displayedPlayerScore.textContent = `Round #${roundNumber}: You lose. Computer's choice - ${computerChoice}, beats your choice - ${playerChoice}. Score: ${playerScore}:${computerScore}.`;
     roundNumber++;
   }
 
   if (playerScore == 5) {
-    console.log(`You win the game. Score: ${playerScore}:${computerScore}.`);
-    resetResults();
+    displayedGameResult.textContent = `You win the game. Score: ${playerScore}:${computerScore}.`;
+    freeze();
   } else if (computerScore == 5) {
-    console.log(`You lost the game. Score: ${playerScore}:${computerScore}.`);
-    resetResults();
+    displayedGameResult.textContent = `You lost the game. Score: ${playerScore}:${computerScore}.`;
+    freeze();
   }
 }
 
@@ -77,13 +76,22 @@ function resetResults() {
   playerScore = 0;
   computerScore = 0;
   roundNumber = 1;
+  displayedPlayerScore.textContent = "";
+  displayedGameResult.textContent = "";
+  buttons.forEach((button) => button.disabled = false);
 }
 
-let buttons = document.querySelectorAll("button");
-console.log(buttons);
+let buttons = document.querySelectorAll(".handButton");
 
 buttons.forEach((button) =>
   button.addEventListener("click", () => {
     playRound(button.id, computerPlay());
   })
 );
+
+let resetButton = document.querySelector(`#reset`);
+resetButton.addEventListener("click", resetResults);
+
+function freeze() {
+    buttons.forEach((button) => button.disabled = true);
+}
