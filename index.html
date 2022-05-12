@@ -8,16 +8,48 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
   </head>
   <body>
+    <h1>ROCK PAPER SCISSORS</h1>
+
     <div id="box">
-      <button id="rock" class="handButton">Rock</button>
-      <button id="paper" class="handButton">Paper</button>
-      <button id="scissors" class="handButton">Scissors</button>
-      <div id="resultBox">
-        <div id="playerScore"></div>
-        <div id="gameResult"></div>
+      <div id="buttonAndResultBox">
+        <div class="container">
+          
+            <span>PLAYER</span>
+
+          <div class="playerButtonsBox">
+            <button id="rock" class="handButton">
+              <img src="/images/rock.png" />
+            </button>
+            <button id="paper" class="handButton">
+              <img src="/images/paper.png" />
+            </button>
+            <button id="scissors" class="handButton">
+              <img src="/images/scissors.png" />
+            </button>
+          </div>
+        </div>
+
+        <div class="resultBox">
+          <div id="playerScore"></div>
+          <div id="gameResult"></div>
+        </div>
+        <div class="container">
+        <span>COMPUTER</span>
+        <div class="computerButtonsBox">
+          <button id="computerRock" class="computerHandButton">
+            <img src="/images/rock.png" />
+          </button>
+          <button id="computerPaper" class="computerHandButton">
+            <img src="/images/paper.png" />
+          </button>
+          <button id="computerScissors" class="computerHandButton">
+            <img src="/images/scissors.png" />
+          </button>
+        </div>
+        </div>
+        <button id="reset">Reset game</button>
       </div>
-      <button id="reset">Reset game</button>
-      <script src="main.js"></script>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>

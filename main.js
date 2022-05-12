@@ -51,16 +51,18 @@ function game(roundResult) {
 
   if (roundResult == 0) {
    displayedPlayerScore.textContent = `Round #${roundNumber}: It's a draw. Your choice: ${computerChoice}, computer's choice: ${playerChoice}. Score: ${playerScore}:${computerScore}.`;
-
     roundNumber++;
+    changeButtonBorders(0);
   } else if (roundResult == 1) {
     playerScore++;
     displayedPlayerScore.textContent = `Round #${roundNumber}: You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}. Score: ${playerScore}:${computerScore}.`;
     roundNumber++;
+    changeButtonBorders(1);
   } else if (roundResult == 2) {
     computerScore++;
     displayedPlayerScore.textContent = `Round #${roundNumber}: You lose. Computer's choice - ${computerChoice}, beats your choice - ${playerChoice}. Score: ${playerScore}:${computerScore}.`;
     roundNumber++;
+    changeButtonBorders(2);
   }
 
   if (playerScore == 5) {
@@ -79,6 +81,21 @@ function resetResults() {
   displayedPlayerScore.textContent = "";
   displayedGameResult.textContent = "";
   buttons.forEach((button) => button.disabled = false);
+}
+
+function changeButtonBorders(result) {
+    console.log(result);
+    
+    let playerButton  = document.querySelector(`#${playerChoice}`);
+    let computerButton  = document.querySelector(`#computer${computerChoice}`);
+
+    
+    switch (result) {
+        case 0:
+            playerButton.style.border = "solid thick orange";
+            computerButton.style.border = "solid thick orange";
+    }
+
 }
 
 let buttons = document.querySelectorAll(".handButton");
