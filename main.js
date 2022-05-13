@@ -1,11 +1,17 @@
 let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 1;
-let computerChoice = "";
-let playerChoice = "";
+let computerChoice = "rock";
+let playerChoice = "rock";
 
+let buttons = document.querySelectorAll(".handButton");
+let resetButton = document.querySelector(`#reset`);
 let displayedPlayerScore = document.querySelector(`#playerScore`);
+let displayedScoreBox = document.querySelector(`.scoreBox`);
 let displayedGameResult = document.querySelector(`#gameResult`);
+let displayedRound = document.querySelector(`#round`);
+let playerButton = document.querySelector(`#${playerChoice}`);
+let computerButton = document.querySelector(`#computer-${computerChoice}`);
 
 function computerPlay() {
   const max = 3;
@@ -28,9 +34,9 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerPlay) {
-  playerChoice = playerSelection;
-  computerChoice = computerPlay;
-
+  
+  resetButtonBorders();
+  
   // draw
   if (playerSelection == computerPlay) {
     game(0);
@@ -48,19 +54,25 @@ function playRound(playerSelection, computerPlay) {
 }
 
 function game(roundResult) {
-
   if (roundResult == 0) {
-   displayedPlayerScore.textContent = `Round #${roundNumber}: It's a draw. Your choice: ${computerChoice}, computer's choice: ${playerChoice}. Score: ${playerScore}:${computerScore}.`;
+    displayedRound.textContent = `Round #${roundNumber}`;
+    displayedPlayerScore.textContent = `Draw. Your choice: ${computerChoice}, computer's choice: ${playerChoice}.`;
+    displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
+    
     roundNumber++;
     changeButtonBorders(0);
   } else if (roundResult == 1) {
+    displayedRound.textContent = `Round #${roundNumber}`;
     playerScore++;
-    displayedPlayerScore.textContent = `Round #${roundNumber}: You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}. Score: ${playerScore}:${computerScore}.`;
+    displayedPlayerScore.textContent = `You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}.`;
+    displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
     roundNumber++;
     changeButtonBorders(1);
   } else if (roundResult == 2) {
+    displayedRound.textContent = `Round #${roundNumber}`;
     computerScore++;
-    displayedPlayerScore.textContent = `Round #${roundNumber}: You lose. Computer's choice - ${computerChoice}, beats your choice - ${playerChoice}. Score: ${playerScore}:${computerScore}.`;
+    displayedPlayerScore.textContent = `You lose. Computer's choice - ${computerChoice}, beats your choice - ${playerChoice}.`;
+    displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
     roundNumber++;
     changeButtonBorders(2);
   }
@@ -80,35 +92,53 @@ function resetResults() {
   roundNumber = 1;
   displayedPlayerScore.textContent = "";
   displayedGameResult.textContent = "";
-  buttons.forEach((button) => button.disabled = false);
+  displayedRound.textContent = ""
+  displayedScoreBox.textContent = "0-0"
+  buttons.forEach((button) => (button.disabled = false));
+  resetButtonBorders();
 }
 
 function changeButtonBorders(result) {
-    console.log(result);
-    
-    let playerButton  = document.querySelector(`#${playerChoice}`);
-    let computerButton  = document.querySelector(`#computer${computerChoice}`);
+  
+  switch (result) {
+    case 0:
+      playerButton.style.border = "3px solid orange";
+      computerButton.style.border = "3px solid orange";
+      break;
+    case 1:
+      playerButton.style.border = "3px solid green";
+      computerButton.style.border = "3px solid red";
+      break;
+    case 2:
+      playerButton.style.border = "3px solid red";
+      computerButton.style.border = "3px solid green";
+      break;
+  }
+}
 
-    
-    switch (result) {
-        case 0:
-            playerButton.style.border = "solid thick orange";
-            computerButton.style.border = "solid thick orange";
-    }
+function resetButtonBorders() {
+
+  playerButton.style.border = "3px solid rgb(38, 38, 38)";
+  computerButton.style.border = "3px solid rgb(38, 38, 38)";
 
 }
 
-let buttons = document.querySelectorAll(".handButton");
-
 buttons.forEach((button) =>
   button.addEventListener("click", () => {
-    playRound(button.id, computerPlay());
+    resetButtonBorders();
+    playerChoice = button.id;
+    computerChoice = computerPlay();
+    playerButton = document.querySelector(`#${playerChoice}`);
+    computerButton = document.querySelector(`#computer-${computerChoice}`);
+
+    playRound(playerChoice, computerChoice);
+    
   })
 );
 
-let resetButton = document.querySelector(`#reset`);
+
 resetButton.addEventListener("click", resetResults);
 
 function freeze() {
-    buttons.forEach((button) => button.disabled = true);
+  buttons.forEach((button) => (button.disabled = true));
 }

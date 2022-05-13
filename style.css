@@ -44,9 +44,8 @@ img {
 }
 
 .resultBox {
-    padding: 30px 30px 30px 30px;
-    flex: 1 1 auto;
-    height: 50px;
+    padding: 10px;
+    flex: 1 0 auto;
     text-align: center;
 }
 
@@ -55,8 +54,27 @@ img {
     border: 0px;
 }
 
+#round {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
 .container {
     display: flex;
+}
+
+.resultContainer {
+    display: flex;
+}
+
+.scoreBox {
+    
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-size: 30px;
+    font-weight:500;
+    padding-right: 20px;
+    padding-left: 12px;
 }
 
 span {
@@ -66,5 +84,6 @@ span {
     text-orientation: upright;
     text-align: center;
     font-weight:bolder;
+    margin-left: 20px;
 }
 
