@@ -8,50 +8,62 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
   </head>
   <body>
-    <h1>ROCK PAPER SCISSORS</h1>
+    
 
     <div id="box">
-      <div id="buttonAndResultBox">
-        <div class="container">
-          
-            <span>PLAYER</span>
+      <h1>ROCK PAPER SCISSORS</h1>
+      <p>Steven Seagal's favourite game (allegedly)</p>
+      
+      <div class="scoreAndButtonsContainer">
+        
+        <div class="namesAndScoreColumn">
+          <span>PLAYER</span>
+          <div class="scoreBox">0-0</div>
+          <span>STEVEN</span>
+        </div>
 
-          <div class="playerButtonsBox">
-            <button id="rock" class="handButton">
-              <img src="/images/rock.png" />
-            </button>
-            <button id="paper" class="handButton">
-              <img src="/images/paper.png" />
-            </button>
-            <button id="scissors" class="handButton">
-              <img src="/images/scissors.png" />
-            </button>
+        <div id="buttonAndResultBox">
+          <div class="container">
+            <div class="playerButtonsBox">
+              <button id="rock" class="handButton">
+                <img src="./images/rock.png" />
+              </button>
+              <button id="paper" class="handButton">
+                <img src="./images/paper.png" />
+              </button>
+              <button id="scissors" class="handButton">
+                <img src="./images/scissors.png" />
+              </button>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="resultBox">
+              <div id="round"></div>
+              <div id="playerScore"></div>
+              <div id="gameResult"></div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="computerButtonsBox">
+              <button id="computer-rock" class="computerHandButton">
+                <img src="./images/rock.png" />
+              </button>
+              <button id="computer-paper" class="computerHandButton">
+                <img src="./images/paper.png" />
+              </button>
+              <button id="computer-scissors" class="computerHandButton">
+                <img src="./images/scissors.png" />
+              </button>
+            </div>
           </div>
         </div>
+        <div id="scroll-container">
+          <div id="scroll-text">STEVEN SEAGUL SAYS HI!</div>
+        </div>
 
-        <div class ="container">
-        <div class = "scoreBox">0-0</div>
-        <div class="resultBox">
-          <div id="round"></div>
-          <div id="playerScore"></div>
-          <div id="gameResult"></div>
-        </div>
-      </div>
 
-        <div class="container">
-        <span>COMPUTER</span>
-        <div class="computerButtonsBox">
-          <button id="computer-rock" class="computerHandButton">
-            <img src="/images/rock.png" />
-          </button>
-          <button id="computer-paper" class="computerHandButton">
-            <img src="/images/paper.png" />
-          </button>
-          <button id="computer-scissors" class="computerHandButton">
-            <img src="/images/scissors.png" />
-          </button>
-        </div>
-        </div>
       </div>
       <button id="reset">Reset game</button>
     </div>

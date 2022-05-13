@@ -3,6 +3,7 @@ let computerScore = 0;
 let roundNumber = 1;
 let computerChoice = "rock";
 let playerChoice = "rock";
+const quote = `You wanna get by me? There’s only two things stopping you. Fear and common sense.`;
 
 let buttons = document.querySelectorAll(".handButton");
 let resetButton = document.querySelector(`#reset`);
@@ -12,6 +13,9 @@ let displayedGameResult = document.querySelector(`#gameResult`);
 let displayedRound = document.querySelector(`#round`);
 let playerButton = document.querySelector(`#${playerChoice}`);
 let computerButton = document.querySelector(`#computer-${computerChoice}`);
+
+displayedPlayerScore.textContent = quote;
+displayedGameResult.textContent = " - Steven Seagal";
 
 function computerPlay() {
   const max = 3;
@@ -34,9 +38,10 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerPlay) {
-  
+
+  displayedGameResult.textContent = "";
   resetButtonBorders();
-  
+
   // draw
   if (playerSelection == computerPlay) {
     game(0);
@@ -56,32 +61,32 @@ function playRound(playerSelection, computerPlay) {
 function game(roundResult) {
   if (roundResult == 0) {
     displayedRound.textContent = `Round #${roundNumber}`;
-    displayedPlayerScore.textContent = `Draw. ${computerChoice} ties ${playerChoice}.`;
+    displayedPlayerScore.textContent = `Draw. ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1, computerChoice.length)} and ${playerChoice}.`;
     displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
-    
     roundNumber++;
     changeButtonBorders(0);
+    
   } else if (roundResult == 1) {
     displayedRound.textContent = `Round #${roundNumber}`;
     playerScore++;
-    displayedPlayerScore.textContent = `You win. ${playerChoice} beats ${computerChoice}.`;
+    displayedPlayerScore.textContent = `Won. ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1, playerChoice.length)} beats ${computerChoice}.`;
     displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
     roundNumber++;
     changeButtonBorders(1);
   } else if (roundResult == 2) {
     displayedRound.textContent = `Round #${roundNumber}`;
     computerScore++;
-    displayedPlayerScore.textContent = `You lose. ${computerChoice} beats ${playerChoice}.`;
+    displayedPlayerScore.textContent = `Lost. ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1, computerChoice.length)} beats ${playerChoice}.`;
     displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
     roundNumber++;
     changeButtonBorders(2);
   }
 
   if (playerScore == 5) {
-    displayedGameResult.textContent = `You win the game. Score: ${playerScore}:${computerScore}.`;
+    displayedGameResult.textContent = `You win the game. Steven sad :(`;
     freeze();
   } else if (computerScore == 5) {
-    displayedGameResult.textContent = `You lost the game. Score: ${playerScore}:${computerScore}.`;
+    displayedGameResult.textContent = `You lost the game. Steven happy :)`;
     freeze();
   }
 }
@@ -90,16 +95,15 @@ function resetResults() {
   playerScore = 0;
   computerScore = 0;
   roundNumber = 1;
-  displayedPlayerScore.textContent = "";
-  displayedGameResult.textContent = "";
-  displayedRound.textContent = ""
-  displayedScoreBox.textContent = "0-0"
+  displayedPlayerScore.textContent = quote;
+  displayedGameResult.textContent = " - Steven Seagal";
+  displayedRound.textContent = "";
+  displayedScoreBox.textContent = "0-0";
   buttons.forEach((button) => (button.disabled = false));
   resetButtonBorders();
 }
 
 function changeButtonBorders(result) {
-  
   switch (result) {
     case 0:
       playerButton.style.border = "3px solid orange";
@@ -117,10 +121,8 @@ function changeButtonBorders(result) {
 }
 
 function resetButtonBorders() {
-
   playerButton.style.border = "3px solid rgb(38, 38, 38)";
   computerButton.style.border = "3px solid rgb(38, 38, 38)";
-
 }
 
 buttons.forEach((button) =>
@@ -132,10 +134,8 @@ buttons.forEach((button) =>
     computerButton = document.querySelector(`#computer-${computerChoice}`);
 
     playRound(playerChoice, computerChoice);
-    
   })
 );
-
 
 resetButton.addEventListener("click", resetResults);
 

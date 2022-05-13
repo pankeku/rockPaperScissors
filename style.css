@@ -1,100 +1,169 @@
 body {
-    background-color: rgb(252, 242, 240);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+  background-color: rgb(252, 242, 240);
 }
 
 h1 {
-    text-align: center;
-    color:rgb(38, 38, 38);
+  text-align: center;
+  color: rgb(38, 38, 38);
+  margin-block-end: 0em;
+}
+
+p {
+    font-size: small;
+    margin-block: 0;
+    margin-top: 5px;
+    
 }
 
 img {
-    width: 120px;
-    border-radius: 50px;
-
+  width: 120px;
+  border-radius: 50px;
 }
 
 #box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreAndButtonsContainer {
+  display: flex;
 }
 
 #buttonAndResultBox {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .playerButtonsBox .computerButtonsBox {
-    flex: 1;
-    display: flex;
-    padding: 50px;
+  flex: 1;
+  display: flex;
+  padding: 50px;
 }
 
-.handButton, .computerHandButton {
-    padding: 0px;
-    margin: 50px;
-    border: 0px;
-    border-radius: 50px;
-    border: 3px solid rgb(38, 38, 38);
-    
+.handButton,
+.computerHandButton {
+  padding: 0px;
+  margin: 50px;
+  border: 0px;
+  border-radius: 50px;
+  border: 3px solid rgb(38, 38, 38);
 }
 
 .handButton:hover {
-    outline: 10px solid white;
-
+  outline: 10px solid white;
 }
 
 .resultBox {
-    padding: 10px;
-    flex: 1 0 auto;
-    text-align: center;
-    min-height: 100px;
+  padding: 10px;
+  flex: 1 0 auto;
+  text-align: center;
+  min-height: 100px;
 }
 
 #reset {
-
-    font-weight: lighter;
-    background-color: rgb(252, 242, 240);
-    border: 0px;
+  font-weight: lighter;
+  background-color: rgb(252, 242, 240);
+  border: 0px;
 }
 
 #round {
-    margin-bottom: 20px;
-    font-weight: bold;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .container {
-    display: flex;
+  display: flex;
 }
 
 .resultContainer {
-    display: flex;
+  display: flex;
+}
+
+.namesAndScoreColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
 }
 
 .scoreBox {
-    
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-    font-size: 30px;
-    font-weight:500;
-    padding-right: 20px;
-    padding-left: 12px;
+  flex: 0 1 auto;
+  min-height: 120px;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 span {
-    font-size:smaller;
-    margin-right: 20px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-    text-align: center;
-    font-weight:bolder;
-    margin-left: 20px;
+  flex: 1;
+  font-size: smaller;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  text-align: center;
+  font-weight: bolder;
 }
 
+#gameResult {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#scroll-container {
+  overflow: hidden;
+  display: flex;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+#scroll-text {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-size: smaller;
+  text-align: center;
+  font-weight: bolder;
+  /* animation properties */
+  -moz-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+
+  -moz-animation: my-animation 20s linear infinite;
+  -webkit-animation: my-animation 20s linear infinite;
+  animation: my-animation 20s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+    from {
+      -moz-transform: translateY(100%);
+    }
+    to {
+      -moz-transform: translateY(-100%);
+    }
+  }
+  
+  /* for Chrome */
+  @-webkit-keyframes my-animation {
+    from {
+      -webkit-transform: translateY(100%);
+    }
+    to {
+      -webkit-transform: translateY(-100%);
+    }
+  }
+  
+  @keyframes my-animation {
+    from {
+      -moz-transform: translateY(100%);
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+    }
+    to {
+      -moz-transform: translateY(-100%);
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%);
+    }
+  }
