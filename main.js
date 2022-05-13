@@ -56,7 +56,7 @@ function playRound(playerSelection, computerPlay) {
 function game(roundResult) {
   if (roundResult == 0) {
     displayedRound.textContent = `Round #${roundNumber}`;
-    displayedPlayerScore.textContent = `Draw. Your choice: ${computerChoice}, computer's choice: ${playerChoice}.`;
+    displayedPlayerScore.textContent = `Draw. ${computerChoice} ties ${playerChoice}.`;
     displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
     
     roundNumber++;
@@ -64,14 +64,14 @@ function game(roundResult) {
   } else if (roundResult == 1) {
     displayedRound.textContent = `Round #${roundNumber}`;
     playerScore++;
-    displayedPlayerScore.textContent = `You win. Your choice - ${playerChoice}, beats computer's choice - ${computerChoice}.`;
+    displayedPlayerScore.textContent = `You win. ${playerChoice} beats ${computerChoice}.`;
     displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
     roundNumber++;
     changeButtonBorders(1);
   } else if (roundResult == 2) {
     displayedRound.textContent = `Round #${roundNumber}`;
     computerScore++;
-    displayedPlayerScore.textContent = `You lose. Computer's choice - ${computerChoice}, beats your choice - ${playerChoice}.`;
+    displayedPlayerScore.textContent = `You lose. ${computerChoice} beats ${playerChoice}.`;
     displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
     roundNumber++;
     changeButtonBorders(2);
