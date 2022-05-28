@@ -125,6 +125,7 @@ span {
   font-size: smaller;
   text-align: center;
   font-weight: bolder;
+  
   /* animation properties */
   -moz-transform: translateY(100%);
   -webkit-transform: translateY(100%);
