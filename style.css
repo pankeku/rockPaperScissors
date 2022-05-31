@@ -66,30 +66,40 @@ img {
   padding: 50px;
 }
 
-.player-buttons__sign,
-.computer-buttons__sign {
+.player-buttons > *, .computer-buttons > * {
   padding: 0px;
   margin: 50px;
   border-radius: 50px;
 }
 
+
+
 .player-buttons__sign:hover {
   outline: 10px solid white;
 }
 
-.btn--green {
-  border: 3px solid green;
-}
-
-.btn--red {
-  border: 3px solid red;
-}
-
-.btn--default {
+.player-buttons__rock--color {
   border: 3px solid rgb(38, 38, 38);
 }
-.btn--orange {
-  border: 3px solid orange;
+
+.player-buttons__paper--color {
+  border: 3px solid rgb(38, 38, 38);
+}
+
+.player-buttons__scissors--color {
+  border: 3px solid rgb(38, 38, 38);
+}
+
+.computer-buttons__rock--color {
+  border: 3px solid rgb(38, 38, 38);
+}
+
+.computer-buttons__paper--color {
+  border: 3px solid rgb(38, 38, 38);
+}
+
+.computer-buttons__scissors--color {
+  border: 3px solid rgb(38, 38, 38);
 }
 
 .result {

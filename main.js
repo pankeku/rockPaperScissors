@@ -5,18 +5,35 @@ let computerChoice = 'rock';
 let playerChoice = 'rock';
 const quote =
   'You wanna get by me? There’s only two things stopping you. Fear and common sense.';
+const author = '- Steven Seagal';
 
-const buttons = document.querySelectorAll('.player-buttons__sign');
+const buttons = document.querySelectorAll('.buttons');
 const resetButton = document.querySelector('.content__reset-button');
 const displayedScoreBox = document.querySelector('.left-column__score');
 const displayedRound = document.querySelector('.result__round');
 const displayedPlayerScore = document.querySelector('.result__player-score');
 const displayedGameResult = document.querySelector('.result__final-result');
-let playerButton = document.querySelector(`#${playerChoice}`);
-let computerButton = document.querySelector(`#computer-${computerChoice}`);
 
 displayedPlayerScore.textContent = quote;
-displayedGameResult.textContent = ' - Steven Seagal';
+displayedGameResult.textContent = author;
+
+let playerButton = findRule(`.player-buttons__${playerChoice}--color`);
+let computerButton = findRule(
+  `.computer-buttons__${computerChoice}--color`
+);
+
+function findRule(className) {
+  const rules = document.styleSheets[0].cssRules;
+  let targetRule;
+
+  for (i = 0; i < rules.length; i++) {
+    if (rules[i].selectorText === className) {
+      targetRule = rules[i];
+      break;
+    }
+  }
+  return targetRule;
+}
 
 function computerPlay() {
   const max = 3;
@@ -30,11 +47,8 @@ function computerPlay() {
 }
 
 function resetButtonBorders() {
-  playerButton.classList.remove('btn--orange', 'btn--red', 'btn-green');
-  playerButton.classList.add('btn--default');
-
-  computerButton.classList.remove('btn--orange', 'btn--red', 'btn-green');
-  computerButton.classList.add('btn--default');
+  playerButton.style.border = '3px solid rgb(38, 38, 38)';
+  computerButton.style.border = '3px solid rgb(38, 38, 38)';
 }
 
 function resetResults() {
@@ -75,27 +89,18 @@ function playRound(playerSelection, computerPlay) {
 
 function changeButtonBorders(result) {
   if (result === 0) {
-    playerButton.classList.remove('btn--default');
-    playerButton.classList.add('btn--orange');
-
-    computerButton.classList.remove('btn--default');
-    computerButton.classList.add('btn--orange');
+    playerButton.style.border = '3px solid orange';
+    computerButton.style.border = '3px solid orange';
   }
 
   if (result === 1) {
-    playerButton.classList.remove('btn--default');
-    playerButton.classList.add('btn--green');
-
-    computerButton.classList.remove('btn--default');
-    computerButton.classList.add('btn--red');
+    playerButton.style.border = '3px solid green';
+    computerButton.style.border = '3px solid red';
   }
 
   if (result === 2) {
-    playerButton.classList.remove('btn--default');
-    playerButton.classList.add('btn--red');
-
-    computerButton.classList.remove('btn--default');
-    computerButton.classList.add('btn--green');
+    playerButton.style.border = '3px solid red';
+    computerButton.style.border = '3px solid green';
   }
 }
 
@@ -152,8 +157,10 @@ buttons.forEach((button) =>
     playerChoice = button.id;
     computerChoice = computerPlay();
 
-    playerButton = document.querySelector(`#${playerChoice}`);
-    computerButton = document.querySelector(`#computer-${computerChoice}`);
+    playerButton = findRule(`.player-buttons__${playerChoice}--color`);
+    computerButton = findRule(
+      `.computer-buttons__${computerChoice}--color`
+    );
 
     game();
   })
