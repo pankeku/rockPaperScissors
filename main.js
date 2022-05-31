@@ -3,14 +3,15 @@ let computerScore = 0;
 let roundNumber = 1;
 let computerChoice = 'rock';
 let playerChoice = 'rock';
-const quote = 'You wanna get by me? There’s only two things stopping you. Fear and common sense.';
+const quote =
+  'You wanna get by me? There’s only two things stopping you. Fear and common sense.';
 
-const buttons = document.querySelectorAll('.handButton');
-const resetButton = document.querySelector('#reset');
-const displayedPlayerScore = document.querySelector('#playerScore');
-const displayedScoreBox = document.querySelector('.scoreBox');
-const displayedGameResult = document.querySelector('#gameResult');
-const displayedRound = document.querySelector('#round');
+const buttons = document.querySelectorAll('.player-buttons__sign');
+const resetButton = document.querySelector('.content__reset-button');
+const displayedScoreBox = document.querySelector('.left-column__score');
+const displayedRound = document.querySelector('.result__round');
+const displayedPlayerScore = document.querySelector('.result__player-score');
+const displayedGameResult = document.querySelector('.result__final-result');
 let playerButton = document.querySelector(`#${playerChoice}`);
 let computerButton = document.querySelector(`#computer-${computerChoice}`);
 
@@ -29,8 +30,11 @@ function computerPlay() {
 }
 
 function resetButtonBorders() {
-  playerButton.style.border = '3px solid rgb(38, 38, 38)';
-  computerButton.style.border = '3px solid rgb(38, 38, 38)';
+  playerButton.classList.remove('btn--orange', 'btn--red', 'btn-green');
+  playerButton.classList.add('btn--default');
+
+  computerButton.classList.remove('btn--orange', 'btn--red', 'btn-green');
+  computerButton.classList.add('btn--default');
 }
 
 function resetResults() {
@@ -71,18 +75,27 @@ function playRound(playerSelection, computerPlay) {
 
 function changeButtonBorders(result) {
   if (result === 0) {
-    playerButton.style.border = '3px solid orange';
-    computerButton.style.border = '3px solid orange';
+    playerButton.classList.remove('btn--default');
+    playerButton.classList.add('btn--orange');
+
+    computerButton.classList.remove('btn--default');
+    computerButton.classList.add('btn--orange');
   }
 
   if (result === 1) {
-    playerButton.style.border = '3px solid green';
-    computerButton.style.border = '3px solid red';
+    playerButton.classList.remove('btn--default');
+    playerButton.classList.add('btn--green');
+
+    computerButton.classList.remove('btn--default');
+    computerButton.classList.add('btn--red');
   }
 
   if (result === 2) {
-    playerButton.style.border = '3px solid red';
-    computerButton.style.border = '3px solid green';
+    playerButton.classList.remove('btn--default');
+    playerButton.classList.add('btn--red');
+
+    computerButton.classList.remove('btn--default');
+    computerButton.classList.add('btn--green');
   }
 }
 
@@ -97,19 +110,28 @@ function game() {
   roundNumber++;
 
   if (roundResult === 0) {
-    displayedPlayerScore.textContent = `Draw. ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1, computerChoice.length)} and ${playerChoice}.`;
+    displayedPlayerScore.textContent = `Draw. ${
+      computerChoice.charAt(0).toUpperCase() +
+      computerChoice.slice(1, computerChoice.length)
+    } and ${playerChoice}.`;
     changeButtonBorders(0);
   }
 
   if (roundResult === 1) {
     playerScore++;
-    displayedPlayerScore.textContent = `Won. ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1, playerChoice.length)} beats ${computerChoice}.`;
+    displayedPlayerScore.textContent = `Won. ${
+      playerChoice.charAt(0).toUpperCase() +
+      playerChoice.slice(1, playerChoice.length)
+    } beats ${computerChoice}.`;
     changeButtonBorders(1);
   }
 
   if (roundResult === 2) {
     computerScore++;
-    displayedPlayerScore.textContent = `Lost. ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1, computerChoice.length)} beats ${playerChoice}.`;
+    displayedPlayerScore.textContent = `Lost. ${
+      computerChoice.charAt(0).toUpperCase() +
+      computerChoice.slice(1, computerChoice.length)
+    } beats ${playerChoice}.`;
     changeButtonBorders(2);
   }
 
@@ -124,15 +146,17 @@ function game() {
   displayedScoreBox.textContent = `${playerScore}-${computerScore}`;
 }
 
-buttons.forEach((button) => button.addEventListener('click', () => {
-  resetButtonBorders();
-  playerChoice = button.id;
-  computerChoice = computerPlay();
+buttons.forEach((button) =>
+  button.addEventListener('click', () => {
+    resetButtonBorders();
+    playerChoice = button.id;
+    computerChoice = computerPlay();
 
-  playerButton = document.querySelector(`#${playerChoice}`);
-  computerButton = document.querySelector(`#computer-${computerChoice}`);
+    playerButton = document.querySelector(`#${playerChoice}`);
+    computerButton = document.querySelector(`#computer-${computerChoice}`);
 
-  game();
-}));
+    game();
+  })
+);
 
 resetButton.addEventListener('click', resetResults);

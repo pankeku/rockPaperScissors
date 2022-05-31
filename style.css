@@ -2,94 +2,42 @@ body {
   background-color: rgb(252, 242, 240);
 }
 
-h1 {
-  text-align: center;
-  color: rgb(38, 38, 38);
-  margin-block-end: 0em;
-}
-
-p {
-    font-size: small;
-    margin-block: 0;
-    margin-top: 5px;
-    
-}
-
 img {
   width: 120px;
   border-radius: 50px;
 }
 
-#box {
+.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.scoreAndButtonsContainer {
-  display: flex;
-}
-
-#buttonAndResultBox {
-  display: flex;
-  flex-direction: column;
-}
-
-.playerButtonsBox .computerButtonsBox {
-  flex: 1;
-  display: flex;
-  padding: 50px;
-}
-
-.handButton,
-.computerHandButton {
-  padding: 0px;
-  margin: 50px;
-  border: 0px;
-  border-radius: 50px;
-  border: 3px solid rgb(38, 38, 38);
-}
-
-.handButton:hover {
-  outline: 10px solid white;
-}
-
-.resultBox {
-  padding: 10px;
-  flex: 1 0 auto;
+.content__header {
   text-align: center;
-  min-height: 100px;
+  color: rgb(38, 38, 38);
+  margin-block-end: 0em;
 }
 
-#reset {
-  font-weight: lighter;
-  background-color: rgb(252, 242, 240);
-  border: 0px;
+.content__subheader {
+  font-size: small;
+  margin-block: 0;
+  margin-top: 5px;
 }
 
-#round {
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.container {
+.main {
   display: flex;
 }
 
-.resultContainer {
-  display: flex;
-}
-
-.namesAndScoreColumn {
+.left-column {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 0px;
 }
 
-.scoreBox {
+.left-column__score {
   flex: 0 1 auto;
   min-height: 120px;
   writing-mode: vertical-lr;
@@ -98,7 +46,7 @@ img {
   font-weight: 500;
 }
 
-span {
+.left-column__names {
   flex: 1;
   font-size: smaller;
   writing-mode: vertical-lr;
@@ -107,25 +55,80 @@ span {
   font-weight: bolder;
 }
 
-#gameResult {
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-buttons .computer-buttons {
+  flex: 1;
+  display: flex;
+  padding: 50px;
+}
+
+.player-buttons__sign,
+.computer-buttons__sign {
+  padding: 0px;
+  margin: 50px;
+  border-radius: 50px;
+}
+
+.player-buttons__sign:hover {
+  outline: 10px solid white;
+}
+
+.btn--green {
+  border: 3px solid green;
+}
+
+.btn--red {
+  border: 3px solid red;
+}
+
+.btn--default {
+  border: 3px solid rgb(38, 38, 38);
+}
+.btn--orange {
+  border: 3px solid orange;
+}
+
+.result {
+  padding: 10px;
+  flex: 1 0 auto;
+  text-align: center;
+  min-height: 100px;
+}
+
+.result__round {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.result__final-result {
   margin-top: 20px;
   font-weight: bold;
 }
 
-#scroll-container {
+.right-column {
   overflow: hidden;
   display: flex;
   margin-top: 45px;
   margin-bottom: 45px;
 }
 
-#scroll-text {
+.content__reset-button {
+  font-weight: lighter;
+  background-color: rgb(252, 242, 240);
+  border: 0px;
+}
+
+.right-column__scroll-text {
   writing-mode: vertical-lr;
   text-orientation: upright;
   font-size: smaller;
   text-align: center;
   font-weight: bolder;
-  
+
   /* animation properties */
   -moz-transform: translateY(100%);
   -webkit-transform: translateY(100%);
@@ -138,33 +141,33 @@ span {
 
 /* for Firefox */
 @-moz-keyframes my-animation {
-    from {
-      -moz-transform: translateY(100%);
-    }
-    to {
-      -moz-transform: translateY(-100%);
-    }
+  from {
+    -moz-transform: translateY(100%);
   }
-  
-  /* for Chrome */
-  @-webkit-keyframes my-animation {
-    from {
-      -webkit-transform: translateY(100%);
-    }
-    to {
-      -webkit-transform: translateY(-100%);
-    }
+  to {
+    -moz-transform: translateY(-100%);
   }
-  
-  @keyframes my-animation {
-    from {
-      -moz-transform: translateY(100%);
-      -webkit-transform: translateY(100%);
-      transform: translateY(100%);
-    }
-    to {
-      -moz-transform: translateY(-100%);
-      -webkit-transform: translateY(-100%);
-      transform: translateY(-100%);
-    }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateY(100%);
   }
+  to {
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+  to {
+    -moz-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
